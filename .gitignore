@@ -1,0 +1,7 @@
+# virtualenv
+env/
+
+# csv
+*.csv
+
+.idea
