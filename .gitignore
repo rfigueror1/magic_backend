@@ -2,6 +2,6 @@
 env/
 
 # csv
-*.csv
+data.csv
 
 .idea

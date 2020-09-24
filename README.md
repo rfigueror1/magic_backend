@@ -1,6 +1,8 @@
 # Basic Credit Card
 
 ## Setup
+run `chmod a+x import_data.sh`
+
 run `./import_data.sh`
 
 Build image from Dockerfile with docker
