@@ -32,7 +32,7 @@ class TemperaturesHandler:
             I: list
             O: tuple
         """
-        # sort by station depending on ranges
+        # sort by station depending if ranges of dates given
         if ranges:
             temperatures_by_sorted_station = sorted(ranges, key=lambda x: int(x[0]))
         else:
@@ -40,6 +40,7 @@ class TemperaturesHandler:
         max_total_fluct = 0
         temp_total_fluct = 0
         fluct_station = None
+        # obtain iteratively total fluctuation by station, update max value
         for i in range(1, len(temperatures_by_sorted_station)):
             if temperatures_by_sorted_station[i][0] != temperatures_by_sorted_station[i - 1][0]:
                 if temp_total_fluct > max_total_fluct:
@@ -58,16 +59,7 @@ class TemperaturesHandler:
         """
         # filter by dates
         temperatures_by_dates = [x for x in self.temperatures[1:] if (range_dates[0] <= float(x[1]) <= range_dates[1])]
+        # get largest fluctuation for range between dates
         station_result = self.largest_fluctuation_station(temperatures_by_dates)
         return station_result
-
-
-
-if __name__ == "__main__":
-    temp_handler = TemperaturesHandler('data.csv')
-    res = temp_handler.largest_fluctuation_station_by_dates([2000.000, 2002.000])
-    print(res)
-    new_temphandler = TemperaturesHandler('./tests/data2.csv')
-    res = new_temphandler.largest_fluctuation_station_by_dates([2000.000, 2002.000])
-    print(res)
 

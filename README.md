@@ -1,9 +1,8 @@
-# Basic Credit Card
+# Magic Test
 
-## Setup
-run `chmod a+x import_data.sh`
+## Coding Challenges
 
-run `./import_data.sh`
+### Setup
 
 Build image from Dockerfile with docker
 
@@ -14,11 +13,29 @@ docker build --tag magic:1.0 .
 Run docker container from image
 
 ```bash
-docker run -it  --name bcc magic:1.0 /bin/bash
+docker run -it  --name mag magic:1.0 /bin/bash
 ```
 
 Run tests inside docker container
 
 ```bash
-python tests
+python -m tests
+```
+
+Run flatten array function
+
+```bash
+python main.py flatten_array -a [[1,2,[3]],4]
+```
+
+Run temperatures function for lowest temperatures
+
+```bash
+python main.py temperatures -f data.csv -fn lowest
+```
+
+Run temperatures function for lowest temperatures
+
+```bash
+python main.py temperatures -f data.csv -fn lf_dates -r '[2000.000, 2002.000]'
 ```
